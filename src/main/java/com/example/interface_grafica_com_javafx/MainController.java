@@ -1,14 +1,17 @@
 package com.example.interface_grafica_com_javafx;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.net.URL;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
-public class MainController {
+public class MainController implements Initializable {
 
     @FXML
     private TextField txtNumber1;
@@ -35,4 +38,12 @@ public class MainController {
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Constraints.setTextFieldDouble(txtNumber1);
+        Constraints.setTextFieldDouble(txtNumber2);
+        Constraints.setTextFieldMaxLength(txtNumber1, 10);
+        Constraints.setTextFieldMaxLength(txtNumber2, 10);
+
+    }
 }
