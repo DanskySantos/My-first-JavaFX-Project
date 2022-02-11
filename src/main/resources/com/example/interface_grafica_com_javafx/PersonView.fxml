@@ -3,8 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.interface_grafica_com_javafx.PersonView">
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.interface_grafica_com_javafx.PersonController">
    <children>
-      <ComboBox layoutX="50.0" layoutY="36.0" prefWidth="150.0" promptText="Select a person" />
+      <ComboBox fx:id="comboBoxPerson" layoutX="50.0" layoutY="36.0" onAction="#onComboBoxPersonAction" prefWidth="150.0" promptText="Select a person" />
+      <Button fx:id="btAll" layoutX="280.0" layoutY="36.0" mnemonicParsing="false" onAction="#onBtAllAction" text="All" />
    </children>
 </AnchorPane>

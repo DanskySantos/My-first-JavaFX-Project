@@ -4,7 +4,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,7 +21,23 @@ public class PersonController implements Initializable {
     private ComboBox<Person> comboBoxPerson;
 
     @FXML
+    private Button btAll;
+
+    @FXML
     private ObservableList<Person> obsList;
+
+    @FXML
+    public void onComboBoxPersonAction() {
+        Person person = comboBoxPerson.getSelectionModel().getSelectedItem();
+        System.out.println(person);
+    }
+
+    @FXML
+    public void onBtAllAction () {
+        for (Person person : comboBoxPerson.getItems()) {
+            System.out.println(person);
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -28,5 +48,15 @@ public class PersonController implements Initializable {
 
         obsList = FXCollections.observableArrayList(list);
         comboBoxPerson.setItems(obsList);
+
+        Callback<ListView<Person>, ListCell<Person>> factory = lv -> new ListCell<Person>() {
+            @Override
+            protected void updateItem(Person item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty ? "" : item.getName());
+            }
+        };
+        comboBoxPerson.setCellFactory(factory);
+        comboBoxPerson.setButtonCell(factory.call(null));
     }
 }
