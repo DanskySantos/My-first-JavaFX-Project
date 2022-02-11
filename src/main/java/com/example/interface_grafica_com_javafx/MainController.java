@@ -4,21 +4,35 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
+import java.util.Locale;
 
 public class MainController {
-    @FXML
-    private Label LabelText;
 
     @FXML
-    private Button btTest;
+    private TextField txtNumber1;
+    @FXML
+    private TextField txtNumber2;
 
     @FXML
-    public void onBtTestAction(){
-        Alerts.showAlert("Alert title", null, "Hello!", Alert.AlertType.INFORMATION);
-    }
+    private Label labelResult;
+
     @FXML
-    protected void LabelTextButton() {
-        LabelText.setText("Welcome to JavaFX Application!");
+    private Button btSum;
+
+    @FXML
+    public void onBtSumAction(){
+        try {
+            Locale.setDefault(Locale.US);
+            double number1 = Double.parseDouble(txtNumber1.getText());
+            double number2 = Double.parseDouble(txtNumber2.getText());
+            double sum = number1 + number2;
+            labelResult.setText(String.format("%.2f", sum));
+        }
+        catch (NumberFormatException e) {
+            Alerts.showAlert("Error", null, e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
 }

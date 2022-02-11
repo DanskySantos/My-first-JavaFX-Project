@@ -2,10 +2,19 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.interface_grafica_com_javafx.MainController">
    <children>
-      <Button fx:id="btTest" layoutX="174.0" layoutY="137.0" mnemonicParsing="false" onAction="#onBtTestAction" text="Button" />
-      <Label fx:id="LabelTextButton" layoutX="174.0" layoutY="104.0" text="Click here" />
+      <Label layoutX="48.0" layoutY="30.0" text="Calculate Sum:" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNumber1" layoutX="48.0" layoutY="56.0" promptText="first number" />
+      <TextField fx:id="txtNumber2" layoutX="48.0" layoutY="93.0" promptText="second number" />
+      <Button fx:id="btSum" layoutX="64.0" layoutY="137.0" mnemonicParsing="false" onAction="#onBtSumAction" text="Calculate" />
+      <Label layoutX="50.0" layoutY="182.0" prefHeight="26.0" prefWidth="65.0" text="Result     =" />
+      <Label fx:id="labelResult" layoutX="122.0" layoutY="182.0" prefHeight="26.0" prefWidth="65.0" />
    </children>
 </AnchorPane>
